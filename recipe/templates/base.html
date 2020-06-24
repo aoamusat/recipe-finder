@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Recipe Finder | EdgeWave</title>
+    <!-- SEO Meta Tags-->
+    <meta name="description" content="Find the best recipes from across the web. Filter by calories and diet. Share recipes with friends and on social networks.">
+    <meta name="keywords" content="recipes, easy recipes, healthy recipes, food recipes">
+    <meta name="author" content="EdgeWave Technology">
+    <!-- Viewport-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Favicon and Touch Icons-->
+    <link rel="manifest" href="site.webmanifest">
+    <meta name="msapplication-TileColor" content="#766df4">
+    <meta name="theme-color" content="#ffffff">
+    <!-- Page loading styles-->
+    <style>
+      .cs-page-loading {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        -webkit-transition: all .4s .2s ease-in-out;
+        transition: all .4s .2s ease-in-out;
+        background-color: #fff;
+        opacity: 0;
+        visibility: hidden;
+        z-index: 9999;
+      }
+      .cs-page-loading.active {
+        opacity: 1;
+        visibility: visible;
+      }
+      .cs-page-loading-inner {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+        -webkit-transition: opacity .2s ease-in-out;
+        transition: opacity .2s ease-in-out;
+        opacity: 0;
+      }
+      .cs-page-loading.active > .cs-page-loading-inner {
+        opacity: 1;
+      }
+      .cs-page-loading-inner > span {
+        display: block;
+        font-family: 'Inter', sans-serif;
+        font-size: 1rem;
+        font-weight: normal;
+        color: #737491;
+      }
+      .cs-page-spinner {
+        display: inline-block;
+        width: 2.75rem;
+        height: 2.75rem;
+        margin-bottom: .75rem;
+        vertical-align: text-bottom;
+        border: .15em solid #766df4;
+        border-right-color: transparent;
+        border-radius: 50%;
+        -webkit-animation: spinner .75s linear infinite;
+        animation: spinner .75s linear infinite;
+      }
+      @-webkit-keyframes spinner {
+        100% {
+          -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+      @keyframes spinner {
+        100% {
+          -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+      
+    </style>
+    <!-- Page loading scripts-->
+    <script>
+      (function () {
+        window.onload = function () {
+          var preloader = document.querySelector('.cs-page-loading');
+          preloader.classList.remove('active');
+          setTimeout(function () {
+            preloader.remove();
+          }, 2000);
+        };
+      })();
+      
+    </script>
+    <!-- Vendor Styles-->
+    <!-- Main Theme Styles + Bootstrap-->
+    <link rel="stylesheet" media="screen" href="{{ url_for('static', filename='css/theme.min.css') }}">
+  </head>
+  <!-- Body-->
+  <body>
+    <!-- Google Tag Manager (noscript)-->
+    <noscript>
+      <iframe src="//www.googletagmanager.com/ns.html?id=GTM-WKV3GT5" height="0" width="0" style="display: none; visibility: hidden;"></iframe>
+    </noscript>
+    <!-- Page loading spinner-->
+    <div class="cs-page-loading active">
+      <div class="cs-page-loading-inner">
+        <div class="cs-page-spinner"></div><span>Loading...</span>
+      </div>
+    </div>
+    <main class="cs-page-wrapper">
+      <!-- Navbar (Floating light)-->
+      <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page.-->
+      <header class="cs-header navbar navbar-expand-lg navbar-dark navbar-floating navbar-sticky" data-scroll-header>
+        <div class="container px-0 px-xl-3">
+          <button class="navbar-toggler ml-n2 mr-2" type="button" data-toggle="offcanvas" 
+          data-offcanvas-id="primaryMenu"><span class="navbar-toggler-icon"></span>
+          </button>
+          <a class="navbar-brand order-lg-1 
+                mx-auto ml-lg-0 pr-lg-2 mr-lg-4 font-6" href="/">Recipe Finder</a>
+          <div class="d-flex align-items-center order-lg-3 ml-lg-auto">
+          <a class="nav-link-style font-size-sm text-nowrap" href="#" 
+          data-toggle="modal" data-view="#modal-signin-view">
+          <i class="fe-user font-size-xl mr-2"></i>Sign in</a>
+          </div>
+          <div class="cs-offcanvas-collapse order-lg-2" id="primaryMenu">
+            <div class="cs-offcanvas-cap navbar-box-shadow">
+              <h5 class="mt-1 mb-0">Menu</h5>
+              <button class="close lead" type="button" data-toggle="offcanvas" data-offcanvas-id="primaryMenu"><span aria-hidden="true">&times;</span></button>
+            </div>
+          </div>
+        </div>
+      </header>
+      
+      <!-- Hero-->
+      <section class="jarallax bg-dark py-7" data-jarallax data-speed="0.25">
+        <div class="jarallax-img" style="background-image: url({{ url_for('static', filename='img/hero-bg.jpg') }});opacity:0.3"></div>
+        <div class="container py-5 py-sm-7 text-center">
+          <div class="py-md-6">
+            <h1 class="text-light pb-1">Search for recipes and food items</h1>
+            <p class="font-size-lg text-light">Makes it easier to experience delicacies.</p>
+          </div>
+        </div>
+      </section>
+      <!--End Hero-->
+
+      <!-- Page content-->
+      {% block content %}
+      {% endblock content %}
+      <!-- End Page content-->
+
+    <!-- Feature Area-->
+      <section class="bg-gradient position-relative pt-6 pb-5 py-sm-6 mt-5">
+        <div class="bg-overlay bg-size-cover opacity-100" style="background-color: transparent; background-image: url(img/demo/booking/bg-pattern01.png);"></div>
+        <div class="bg-overlay-content container py-2">
+          <div class="row align-items-center">
+            <div class="col-lg-5 offset-lg-1 order-lg-2 pb-5 pb-lg-0 text-center text-lg-left">
+              <h2 class="text-light">What is Recipe Finder??</h2>
+              <p class="text-light mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+            </div>
+            <div class="col-lg-6 order-lg-1">
+              <div class="row">
+                <div class="col-sm-4 mb-2 pb-4 mb-sm-0 pb-sm-0">
+                  <div class="px-2 text-center"><img class="bg-light rounded-circle mb-2" src="img/demo/booking/icons/01.svg" alt="Tickets" width="105">
+                    <p class="font-size-sm font-weight-medium text-light mb-0 pt-1">Make it easier to experience the world</p>
+                  </div>
+                </div>
+                <div class="col-sm-4 mb-2 pb-4 mb-sm-0 pb-sm-0">
+                  <div class="px-2 text-center"><img class="bg-light rounded-circle mb-2" src="img/demo/booking/icons/02.svg" alt="Search" width="105">
+                    <p class="font-size-sm font-weight-medium text-light mb-0 pt-1">Advanced searching with filters</p>
+                  </div>
+                </div>
+                <div class="col-sm-4 mb-2 pb-4 mb-sm-0 pb-sm-0">
+                  <div class="px-2 text-center"><img class="bg-light rounded-circle mb-2" src="img/demo/booking/icons/03.svg" alt="Flight" width="105">
+                    <p class="font-size-sm font-weight-medium text-light mb-0 pt-1">Find the cheapest regular flights</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- End Feature Section-->
+    </main>
+    <footer class="site-footer bg-dark pt-5 pb-4 mt-7">
+      <div class="container d-md-flex justify-content-between align-items-center text-center">
+        <ul class="list-inline font-size-sm mb-3 order-md-2">
+          <li class="list-inline-item my-1"><a class="nav-link-style nav-link-light" href="#">Support</a></li>
+          <li class="list-inline-item my-1"><a class="nav-link-style nav-link-light" href="#">Contacts</a></li>
+          <li class="list-inline-item my-1"><a class="nav-link-style nav-link-light" href="#">Terms &amp; Conditions</a></li>
+        </ul>
+        <p class="font-size-sm mb-3 order-md-1"><span class="text-light opacity-50 mr-1">© All rights reserved. Made by</span><a class="nav-link-style nav-link-light" href="#" target="_blank" rel="noopener">EdgeWave Technology</a></p>
+      </div>
+    </footer>
+    <!-- Back to top button-->
+    <a class="btn-scroll-top" href="#top" data-scroll>
+    <span class="btn-scroll-top-tooltip text-muted font-size-sm mr-2">Top</span><i class="btn-scroll-top-icon fe-arrow-up">   </i></a>
+    
+    <!-- Main theme script-->
+    <script src="{{ url_for('static', filename='js/jquery.slim.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/theme.min.js') }}"></script>
+  </body>
+</html>
