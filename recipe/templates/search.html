@@ -2,37 +2,57 @@
 
 {% block content %}
 <div class="container mt-7 py-4 mb-2 mb-sm-0 pb-sm-5">
-    <h2 class="text-center">Search Result</h2>
+    <h2 class="text-center mb-4">Search Result</h2>
     <!-- Shop grid-->
     <div class="row">
         {% for recipe in recipes %}
             <div class="col-lg-3 col-md-4 col-sm-6 mb-grid-gutter">
-            <div class="card card-product card-hover"><a class="card-img-top" href="#"><img src="{{ recipe['recipe']['image'] }}" alt="Product thumbnail"></a>
-                <div class="card-body"><a class="meta-link font-size-xs mb-1" href="#">{{ recipe['recipe']['source'] }}</a>
-                    <h3 class="font-size-md font-weight-medium mb-2"><a class="meta-link" href="{{ recipe['recipe']['url'] }}">{{ recipe['recipe']['label'] }}</a></h3><span class="text-heading font-weight-semibold">$19.00</span>
-                </div>
-                <div class="card-footer">
-                    <div class="star-rating">
-                        <i class="sr-star fe-star-filled active"></i>
-                        <i class="sr-star fe-star-filled active"></i>
-                        <i class="sr-star fe-star-filled active"></i>
-                        <i class="sr-star fe-star"></i>
-                        <i class="sr-star fe-star"></i>
+                <div class="card card-product card-hover"><a target="_blank" rel="noopener" class="card-img-top" href="{{ url_for('recipeDetails', slug=recipe['recipe']['label']) }}"><img src="{{ recipe['recipe']['image'] }}" alt="{{ recipe['recipe']['label'] }}"></a>
+                    <div class="card-body"><a target="_blank" rel="noopener" class="meta-link font-size-xs mb-1" href="{{ recipe['recipe']['url'] }}">{{ recipe['recipe']['source'] }}</a>
+                        <h3 class="font-size-md font-weight-medium mb-2"><a target="_blank" rel="noopener" class="meta-link" href="{{ recipe['recipe']['url'] }}">{{ recipe['recipe']['label'] }}</a></h3><span class="text-heading font-weight-semibold">$19.00</span>
                     </div>
-                    <div class="d-flex align-items-center">
-                        <a class="btn-wishlist" href="#">
-                            <i class="fe-heart"></i>
-                            <span class="btn-tooltip">Wishlist</span>
-                        </a>
-                        <span class="btn-divider"></span>
-                        <a class="btn-addtocart" href="#">
-                            <i class="fe-arrow-right"></i>
-                            <span class="btn-tooltip">Details</span>
-                        </a>
+                    <div class="card-footer">
+                        <div class="star-rating">
+                            <i class="sr-star fe-star-filled active"></i>
+                            <i class="sr-star fe-star-filled active"></i>
+                            <i class="sr-star fe-star-filled active"></i>
+                            <i class="sr-star fe-star"></i>
+                            <i class="sr-star fe-star"></i>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <a class="btn-wishlist" href="#">
+                                <i class="fe-heart"></i>
+                                <span class="btn-tooltip">Wishlist</span>
+                            </a>
+                            <span class="btn-divider"></span>
+                            <a class="btn btn-primary"  href="#modal-recipe" data-toggle="modal" data-view="#modal-recipe-view">
+                                <i class="fe-arrow-right"></i>
+                                <span class="btn-tooltip">Details</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+            <!--Recipe details modal -->
+            <div class="modal fade" id="modal-recipe" tabindex="-1" style="display: none;" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content border-0">
+                        <div class="cs-view show" id="modal-recipe-view">
+                            <div class="modal-header border-0 bg-dark px-4">
+                                <h4 class="modal-title text-light">Recipe Details</h4>
+                                <button class="close text-light" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                            </div>
+                            <div class="modal-body px-4">
+                                <p class="font-size-ms text-muted"></p>
+                            </div>
+                        </div>
+                        <div class="modal-body text-center px-4 pt-2 pb-4">
+                            <hr>
+                            <p class="font-size-sm font-weight-medium text-heading pt-4">Share on social media</p><a class="social-btn sb-facebook sb-lg mx-1 mb-2" href="#"><i class="fe-facebook"></i></a><a class="social-btn sb-twitter sb-lg mx-1 mb-2" href="#"><i class="fe-twitter"></i></a><a class="social-btn sb-instagram sb-lg mx-1 mb-2" href="#"><i class="fe-instagram"></i></a><a class="social-btn sb-google sb-lg mx-1 mb-2" href="#"><i class="fe-google"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         {% endfor %}
         
     </div>

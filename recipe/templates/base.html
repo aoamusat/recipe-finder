@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Recipe Finder | EdgeWave</title>
+    <title>Recipe Finder | Best Food Outsourcing Service in Nigeria</title>
     <!-- SEO Meta Tags-->
     <meta name="description" content="Find the best recipes from across the web. Filter by calories and diet. Share recipes with friends and on social networks.">
     <meta name="keywords" content="recipes, easy recipes, healthy recipes, food recipes">
@@ -11,6 +11,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Favicon and Touch Icons-->
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='img/apple-pie-32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='img/apple-pie-16.png') }}">
+
+
     <link rel="manifest" href="site.webmanifest">
     <meta name="msapplication-TileColor" content="#766df4">
     <meta name="theme-color" content="#ffffff">
@@ -102,10 +106,6 @@
   </head>
   <!-- Body-->
   <body>
-    <!-- Google Tag Manager (noscript)-->
-    <noscript>
-      <iframe src="//www.googletagmanager.com/ns.html?id=GTM-WKV3GT5" height="0" width="0" style="display: none; visibility: hidden;"></iframe>
-    </noscript>
     <!-- Page loading spinner-->
     <div class="cs-page-loading active">
       <div class="cs-page-loading-inner">
@@ -120,17 +120,33 @@
           <button class="navbar-toggler ml-n2 mr-2" type="button" data-toggle="offcanvas" 
           data-offcanvas-id="primaryMenu"><span class="navbar-toggler-icon"></span>
           </button>
-          <a class="navbar-brand order-lg-1 
-                mx-auto ml-lg-0 pr-lg-2 mr-lg-4 font-6" href="/">Recipe Finder</a>
+            <a class="navbar-brand order-lg-1 mx-auto ml-lg-0 pr-lg-2 mr-lg-4" href="/">
+              <img class="navbar-floating-logo d-none d-lg-block" src="{{ url_for('static', filename='img/logo.png') }}" alt="Around" width="153">
+              <img class="navbar-stuck-logo" src="{{ url_for('static', filename='img/logo.png') }}" alt="Around" width="153">
+              <img class="d-lg-none" src="{{ url_for('static', filename='img/logo.png') }}" alt="Around" width="58">
+          </a>
           <div class="d-flex align-items-center order-lg-3 ml-lg-auto">
-          <a class="nav-link-style font-size-sm text-nowrap" href="#" 
-          data-toggle="modal" data-view="#modal-signin-view">
-          <i class="fe-user font-size-xl mr-2"></i>Sign in</a>
+              <a class="nav-link-style font-size-sm text-nowrap" href="#"> Learn More</a>
           </div>
           <div class="cs-offcanvas-collapse order-lg-2" id="primaryMenu">
             <div class="cs-offcanvas-cap navbar-box-shadow">
               <h5 class="mt-1 mb-0">Menu</h5>
               <button class="close lead" type="button" data-toggle="offcanvas" data-offcanvas-id="primaryMenu"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="cs-offcanvas-body">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a href="#" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Business</a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Recipe - Listings</a></li>
+                    <li><a class="dropdown-item" href="#">Vendors - Directory</a></li>
+                    <li><a class="dropdown-item" href="#">Business - Listing Request</a></li>
+                    <li><a class="dropdown-item" href="#">Planning</a></li>
+                  </ul>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
@@ -165,18 +181,18 @@
             <div class="col-lg-6 order-lg-1">
               <div class="row">
                 <div class="col-sm-4 mb-2 pb-4 mb-sm-0 pb-sm-0">
-                  <div class="px-2 text-center"><img class="bg-light rounded-circle mb-2" src="img/demo/booking/icons/01.svg" alt="Tickets" width="105">
-                    <p class="font-size-sm font-weight-medium text-light mb-0 pt-1">Make it easier to experience the world</p>
+                  <div class="px-2 text-center"><img class="bg-light rounded-circle mb-2" src="{{ url_for('static', filename='img/01.svg') }}" alt="Tickets" width="105">
+                    <p class="font-size-sm font-weight-medium text-light mb-0 pt-1">Make it easier to experience the world cuisine</p>
                   </div>
                 </div>
                 <div class="col-sm-4 mb-2 pb-4 mb-sm-0 pb-sm-0">
-                  <div class="px-2 text-center"><img class="bg-light rounded-circle mb-2" src="img/demo/booking/icons/02.svg" alt="Search" width="105">
+                  <div class="px-2 text-center"><img class="bg-light rounded-circle mb-2" src="{{ url_for('static', filename='img/02.svg') }}" alt="Search" width="105">
                     <p class="font-size-sm font-weight-medium text-light mb-0 pt-1">Advanced searching with filters</p>
                   </div>
                 </div>
                 <div class="col-sm-4 mb-2 pb-4 mb-sm-0 pb-sm-0">
-                  <div class="px-2 text-center"><img class="bg-light rounded-circle mb-2" src="img/demo/booking/icons/03.svg" alt="Flight" width="105">
-                    <p class="font-size-sm font-weight-medium text-light mb-0 pt-1">Find the cheapest regular flights</p>
+                  <div class="px-2 text-center"><img class="bg-light rounded-circle mb-2" src="{{ url_for('static', filename='img/03.svg') }}" alt="Flight" width="105">
+                    <p class="font-size-sm font-weight-medium text-light mb-0 pt-1">Find the cheapest delicacies worldwide</p>
                   </div>
                 </div>
               </div>
@@ -186,19 +202,73 @@
       </section>
       <!-- End Feature Section-->
     </main>
-    <footer class="site-footer bg-dark pt-5 pb-4 mt-7">
-      <div class="container d-md-flex justify-content-between align-items-center text-center">
-        <ul class="list-inline font-size-sm mb-3 order-md-2">
-          <li class="list-inline-item my-1"><a class="nav-link-style nav-link-light" href="#">Support</a></li>
-          <li class="list-inline-item my-1"><a class="nav-link-style nav-link-light" href="#">Contacts</a></li>
-          <li class="list-inline-item my-1"><a class="nav-link-style nav-link-light" href="#">Terms &amp; Conditions</a></li>
-        </ul>
-        <p class="font-size-sm mb-3 order-md-1"><span class="text-light opacity-50 mr-1">© All rights reserved. Made by</span><a class="nav-link-style nav-link-light" href="#" target="_blank" rel="noopener">EdgeWave Technology</a></p>
+    <footer class="cs-footer bg-dark pt-5 pt-md-6">
+      <div class="container pt-3 pt-md-0">
+        <div class="row pb-3">
+          <div class="col-md-4 mt-n2 pb-3 pb-md-0 mb-4"><a class="d-block mb-3" href="/" style="width: 153px;">Recipe Finder</a>
+            <p class="font-size-sm text-light opacity-60 pb-2 pb-sm-3">
+              We are the Nigeria's number one recipe brand. Whether you’re looking for healthy recipes and guides, and meal plans, or just the perfect recipe for dinner tonight, we’re here to help.
+            </p><a class="social-btn sb-outline sb-facebook sb-light sb-lg mr-2 mb-2" href="#"><i class="fe-facebook"></i></a><a class="social-btn sb-outline sb-twitter sb-light sb-lg mr-2 mb-2" href="#"><i class="fe-twitter"></i></a><a class="social-btn sb-outline sb-instagram sb-light sb-lg mr-2 mb-2" href="#"><i class="fe-instagram"></i></a><a class="social-btn sb-outline sb-google sb-light sb-lg mr-2 mb-2" href="#"><i class="fe-google"></i></a>
+          </div>
+          <div class="col-md-2 col-sm-4 ml-auto pb-1 mb-4">
+            <div class="cs-widget cs-widget-light">
+              <h4 class="cs-widget-title">Company</h4>
+              <ul>
+                <li><a class="cs-widget-link" href="#">About</a></li>
+                <li><a class="cs-widget-link" href="#">Careers</a></li>
+                <li><a class="cs-widget-link" href="#">Press</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-3 col-sm-4 pb-1 mb-4">
+            <div class="cs-widget cs-widget-light">
+              <h4 class="cs-widget-title">Corporate</h4>
+              <ul>
+                <li><a class="cs-widget-link" href="#">For Caterers</a></li>
+                <li><a class="cs-widget-link" href="#">Business</a></li>
+                <li><a class="cs-widget-link" href="#">Brands</a></li>
+                <li><a class="cs-widget-link" href="#">Investors</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-3 col-sm-4 mb-4">
+            <div class="cs-widget cs-widget-light">
+              <h4 class="cs-widget-title">Our news</h4>
+              <ul>
+                <li><a class="cs-widget-link" href="#">Latest news</a></li>
+                <li><a class="cs-widget-link" href="#">Updates</a></li>
+                <li><a class="cs-widget-link" href="#">Campaigns</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <hr class="border-light">
+        <div class="row align-items-center my-3 pt-4">
+          <div class="col-md-6 order-md-2 text-md-right mb-3">
+            <ul class="list-inline font-size-sm mb-0">
+              <li class="list-inline-item"><a class="nav-link-style nav-link-light" href="#">Support</a></li>
+              <li class="list-inline-item"><a class="nav-link-style nav-link-light" href="#">Contacts</a></li>
+              <li class="list-inline-item"><a class="nav-link-style nav-link-light" href="#">Terms &amp; Conditions</a></li>
+            </ul>
+          </div>
+          <div class="col-md-6 order-md-1 mb-3">
+            <p class="font-size-sm mb-0">
+                <span class="text-light opacity-50 mr-1">&copy; All rights reserved. </span>
+                <a class="nav-link-style nav-link-light" href="{{ url_for('index') }}" target="_blank" rel="noopener">Recipe Finder</a>
+            </p>
+            <p class="font-size-sm mb-0">
+              Developed by: 
+              <a class="nav-link-style nav-link-light" href="mailto:aoamusat@gmail.com" target="_blank" rel="noopener">EdgeWave Technology.</a>
+            </p>
+          </div>
+        </div>
       </div>
     </footer>
     <!-- Back to top button-->
     <a class="btn-scroll-top" href="#top" data-scroll>
-    <span class="btn-scroll-top-tooltip text-muted font-size-sm mr-2">Top</span><i class="btn-scroll-top-icon fe-arrow-up">   </i></a>
+        <span class="btn-scroll-top-tooltip text-muted font-size-sm mr-2">Top</span>
+        <i class="btn-scroll-top-icon fe-arrow-up"></i>
+    </a>
     
     <!-- Main theme script-->
     <script src="{{ url_for('static', filename='js/jquery.slim.min.js') }}"></script>
